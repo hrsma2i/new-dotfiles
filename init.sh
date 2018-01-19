@@ -1,5 +1,6 @@
 #!/bin/bash -eu
 
+DOTROOT=$(cd $(dirname $0);pwd)
 GREEN='\e[32m'
   RED='\e[31m'
 RESET=' \e[m'
@@ -16,20 +17,23 @@ function has(){
 
 if ! has nvim; then
 	echo -e $GREEN'installing neovim ...'$RESET
-	# colorize the error as red
+	# install neovim
 	sudo apt-get update 
 	sudo apt-get install -y software-properties-common 
 	sudo add-apt-repository -y ppa:neovim-ppa/stable 
 	sudo apt-get update 
 	sudo apt-get install -y neovim 
 	sudo apt-get install -y python-dev python-pip python3-dev python3-pip 
-
+	# alias vi, vim as nvim
 	sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 
 	sudo update-alternatives --config vi 
 	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60 
 	sudo update-alternatives --config vim 
 	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60 
 	sudo update-alternatives --config editor 
+	# link init.vim (for nvim) to .vimrc
+	ln -s $DOTROOT/.vim $DOTROOT/nvim
+	ln -s $DOTROOT/.vimrc $DOTROOT/nvim/init.vim
 	echo -e $GREEN'DONE neovim ...'$RESET
 else
 	echo -e $GREEN'neovim is already installed'$RESET
