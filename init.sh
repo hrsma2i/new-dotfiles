@@ -1,5 +1,9 @@
 #!/bin/bash -eu
 
+#--------------------------------------------------------------------
+#
+#--------------------------------------------------------------------
+
 DOTROOT=$(cd $(dirname $0);pwd)
 GREEN='\e[32m'
   RED='\e[31m'
@@ -14,6 +18,22 @@ function has(){
 	return $?
 }
 
+
+#--------------------------------------------------------------------
+# Trash
+#--------------------------------------------------------------------
+if ! has trash; then
+   echo -e $GREEN'installing trash-cli ...'$RESET
+   pip install --upgrade pip
+   pip install trash-cli
+   echo -e $GREEN'DONE trash-cli ...'$RESET
+else
+	echo -e $GREEN'trash-cli is already installed'$RESET
+fi
+
+#--------------------------------------------------------------------
+# Neovim
+#--------------------------------------------------------------------
 
 if ! has nvim; then
 	echo -e $GREEN'installing neovim ...'$RESET
@@ -38,3 +58,8 @@ if ! has nvim; then
 else
 	echo -e $GREEN'neovim is already installed'$RESET
 fi
+
+
+#--------------------------------------------------------------------
+#
+#--------------------------------------------------------------------
