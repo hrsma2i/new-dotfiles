@@ -18,6 +18,49 @@ function has(){
 	return $?
 }
 
+source $DOTROOT/.bashrc
+
+#--------------------------------------------------------------------
+# elementary commands
+#--------------------------------------------------------------------
+
+apt-get update \
+&& apt-get dist-upgrade -y \
+&& apt-get install -y \
+	apt-utils \
+	build-essential \
+	curl \
+	git \
+	m4 \
+	ruby \
+	texinfo \
+	libbz2-dev \
+	libcurl4-openssl-dev \
+	libexpat-dev \
+	libncurses-dev \
+	zlib1g-dev \
+	gettext \
+	sudo \
+	less \
+	man \
+	wget \
+	vim \
+#&& rm -rf /var/lib/apt/lists/*
+
+#--------------------------------------------------------------------
+# Python & miniconda
+#--------------------------------------------------------------------
+if ! has conda; then
+   echo -e $GREEN'installing miniconda ...'$RESET
+	wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		-O $HOME/miniconda.sh
+	/bin/bash $HOME/miniconda.sh -b -p
+	/bin/rm $HOME/miniconda.sh
+   echo -e $GREEN'DONE miniconda ...'$RESET
+else
+	echo -e $GREEN'miniconda is already installed'$RESET
+fi
+
 
 #--------------------------------------------------------------------
 # Trash
@@ -52,14 +95,8 @@ if ! has nvim; then
 	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60 
 	sudo update-alternatives --config editor 
 	# link init.vim (for nvim) to .vimrc
-	ln -s $DOTROOT/.vim $DOTROOT/nvim
-	ln -s $DOTROOT/.vimrc $DOTROOT/nvim/init.vim
 	echo -e $GREEN'DONE neovim ...'$RESET
 else
 	echo -e $GREEN'neovim is already installed'$RESET
 fi
 
-
-#--------------------------------------------------------------------
-#
-#--------------------------------------------------------------------

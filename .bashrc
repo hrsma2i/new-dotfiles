@@ -23,11 +23,19 @@ if [[ -e $HOME/.local_aliases.zsh ]]; then
 	source $HOME/.local_aliases.zsh
 fi
 
+
+#---------------------------------------------------------------
+# Python & Miniconda
+#---------------------------------------------------------------
+export PATH="$HOME/miniconda3/bin:$PATH"
+
+
 #---------------------------------------------------------------
 # Trash
 #---------------------------------------------------------------
 alias rm='echo "This is not the command you are looking for."; false'
 alias del='trash-put'
+
 
 #---------------------------------------------------------------
 # Neovim
