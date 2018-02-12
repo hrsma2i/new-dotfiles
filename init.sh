@@ -54,13 +54,14 @@ if ! has conda; then
    echo -e $GREEN'installing miniconda ...'$RESET
 	wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 		-O $HOME/miniconda.sh
-	/bin/bash $HOME/miniconda.sh -b -p
+	/bin/bash $HOME/miniconda.sh -b -p $HOME/.miniconda3
 	/bin/rm $HOME/miniconda.sh
    echo -e $GREEN'DONE miniconda ...'$RESET
 else
 	echo -e $GREEN'miniconda is already installed'$RESET
 fi
 
+conda update -y conda
 
 #--------------------------------------------------------------------
 # Trash
@@ -86,7 +87,7 @@ if ! has nvim; then
 	sudo add-apt-repository -y ppa:neovim-ppa/stable 
 	sudo apt-get update 
 	sudo apt-get install -y neovim 
-	sudo apt-get install -y python-dev python-pip python3-dev python3-pip 
+	#sudo apt-get install -y python-dev python-pip python3-dev python3-pip 
 	# alias vi, vim as nvim
 	sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 
 	sudo update-alternatives --config vi 
@@ -100,3 +101,11 @@ else
 	echo -e $GREEN'neovim is already installed'$RESET
 fi
 
+#deoplete (completion plugin)
+conda install -y -c conda-forge neovim
+
+
+#--------------------------------------------------------------------
+# deploy (must be the last)
+#--------------------------------------------------------------------
+$DOTROOT/deploy.sh

@@ -74,6 +74,7 @@ let g:vimproc#dll_path = '~/.cache/dein/repos/github.com/Shougo/vimproc/lib/vimp
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog = expand('~/.miniconda3/bin/python3')
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
