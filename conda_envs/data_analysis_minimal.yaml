@@ -1,0 +1,14 @@
+dependencies:
+    - joblib
+    - tqdm
+    - numpy
+    - matplotlib
+    - pandas
+    - scipy
+    - jupyter
+    - scikit-learn
+    - pillow
+    - opencv
+    - scikit-image
+    - chainer
+    - gensim
