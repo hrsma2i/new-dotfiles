@@ -19,8 +19,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # local aliases
-if [[ -e $HOME/.local_aliases.zsh ]]; then
-	source $HOME/.local_aliases.zsh
+if [[ -e $HOME/.local_aliases.sh ]]; then
+	source $HOME/.local_aliases.sh
 fi
 
 
