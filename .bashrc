@@ -17,6 +17,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias al="vim $HOME/.local_aliaces.sh"
 
 # git
 alias br="git branch"
