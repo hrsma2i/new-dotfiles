@@ -36,9 +36,9 @@ alias reset="git reset"
 # local aliases
 if [[ -e $HOME/.local_aliases.sh ]]; then
 	source $HOME/.local_aliases.sh
-	alias al="vim $HOME/.local_aliases.sh"
 fi
-
+alias al="vim $HOME/.local_aliases.sh"
+alias sal="source $HOME/.local_aliases.sh"
 
 #---------------------------------------------------------------
 # Python & Miniconda
@@ -66,5 +66,8 @@ export XDG_CONFIG_HOME=$HOME/.dotfiles
 
 if type jupyter &> /dev/null; then
 	# excute jupyter notebook in background
-	alias note="jupyter notebook --allow-root &> /dev/null &"
+	alias note="jupyter notebook &> /dev/null &"
+	if [ $UID = $(id -u root) ]; then
+		alias note="jupyter notebook --allow-root &> /dev/null &"
+	fi
 fi
