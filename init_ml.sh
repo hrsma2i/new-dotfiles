@@ -40,3 +40,14 @@ cp -r $DOTROOT/.jupyter $HOME
 jupyter notebook --generate-config
 python $DOTROOT/add_key_to_jupyter_config.py # write sha1 key in config file
 
+
+#--------------------------------------------------------------------
+# vim-keybind for jupyter
+#--------------------------------------------------------------------
+
+conda install -y -c conda-forge jupyter_contrib_nbextensions
+#jupyter contrib nbextension install --user
+mkdir -p $(jupyter --data-dir)/nbextensions
+cd $(jupyter --data-dir)/nbextensions
+git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+chmod -R go-w vim_binding
