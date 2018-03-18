@@ -1,0 +1,14 @@
+#! /bin/sh
+if [ $# -ne 1 ]; then
+    echo "This needs 1 argment, CONTAINER_NAME" 1>&2
+    exit 1
+fi
+
+
+docker run -it \
+           --runtime=nvidia \
+           --name $1 \
+           -p 8888:8888 \
+           -v $HOME:/root/host_home \
+           -v $HOME/.dotfiles:/root/.dotfiles \
+           nvidia/cuda:8.0-cudnn7-devel-ubuntu16.04
