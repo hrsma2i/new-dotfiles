@@ -21,12 +21,13 @@ function has(){
 source $DOTROOT/.bashrc
 
 #--------------------------------------------------------------------
-# install minimal library for data science
+# install basic libraries for data science
 #--------------------------------------------------------------------
 
 cp $DOTROOT/requirements.txt $HOME
 vim $HOME/requirements.txt
-conda install -y --file $HOME/requirements.txt
+#conda install -y --file $HOME/requirements.txt
+pip install -r $HOME/requirements.txt
 
 
 #--------------------------------------------------------------------
