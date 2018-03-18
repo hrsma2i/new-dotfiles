@@ -21,22 +21,22 @@ function has(){
 source $DOTROOT/.bashrc
 
 #--------------------------------------------------------------------
-# make environment
+# install minimal library for data science
 #--------------------------------------------------------------------
 
 cp $DOTROOT/requirements.txt $HOME
 vim $HOME/requirements.txt
 conda install -y --file $HOME/requirements.txt
 
+
 #--------------------------------------------------------------------
 # jupyter
 #--------------------------------------------------------------------
 
-#conda install -y jupyter
-#
-#if ! has jupyter; then
-#	echo -e $GREEN'installing jupyter ...'$RESET
-#	echo -e $GREEN'DONE jupyter ...'$RESET
-#else
-#	echo -e $GREEN'jupyter is already installed'$RESET
-#fi
+if ! has jupyter; then
+	conda install -y jupyter
+fi
+cp -r $DOTROOT/.jupyter $HOME
+jupyter notebook --generate-config
+python $DOTROOT/add_key_to_jupyter_config.py # write sha1 key in config file
+
