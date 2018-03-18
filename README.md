@@ -14,3 +14,12 @@ source ~/.bashrc &&\
 nvim -c UpdateRemotePlugins -c q
 ```
 
+## Data Science
+
+```sh
+conda env create --name ml_base -f ~/.dotfiles/conda_envs/data_analysis_minimal.yaml
+
+source activate ml_base
+
+.dotfiles/init_jupyter.py
+```
