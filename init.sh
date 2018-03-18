@@ -90,11 +90,11 @@ if ! has nvim; then
 	#sudo apt-get install -y python-dev python-pip python3-dev python3-pip 
 	# alias vi, vim as nvim
 	sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 
-	sudo update-alternatives --config vi 
+	sudo update-alternatives --auto vi 
 	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60 
-	sudo update-alternatives --config vim 
+	sudo update-alternatives --auto vim 
 	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60 
-	sudo update-alternatives --config editor 
+	sudo update-alternatives --auto editor 
 	# link init.vim (for nvim) to .vimrc
 	echo -e $GREEN'DONE neovim ...'$RESET
 else
