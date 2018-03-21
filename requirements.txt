@@ -5,6 +5,7 @@ numpy
 matplotlib
 pandas
 jupyter
+jupyter_contrib_nbextensions
 
 pillow
 opencv-python
