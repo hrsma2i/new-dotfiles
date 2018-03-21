@@ -1,24 +1,7 @@
+DOTROOT=$(cd $(dirname $0);pwd)
 #---------------------------------------------------------------
 # Alias
 #---------------------------------------------------------------
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias al="vim $HOME/.local_aliaces.sh"
-
 # git
 alias br="git branch"
 alias co="git checkout"
@@ -32,28 +15,18 @@ alias pull="git pull"
 alias merge="git merge"
 alias reset="git reset"
 
-
-
 #---------------------------------------------------------------
-# Python & Miniconda
+# Alias
 #---------------------------------------------------------------
-export PATH="$HOME/.miniconda3/bin:$PATH"
-
-
-#---------------------------------------------------------------
-# Trash
-#---------------------------------------------------------------
-alias rm='echo "This is not the command you are looking for."; false'
-alias del='trash-put'
-
-
-#---------------------------------------------------------------
-# Neovim
-#---------------------------------------------------------------
-# dein.vim root dir
-export XDG_CONFIG_HOME=$HOME/.dotfiles
-
-
+if [ "$(uname)" == 'Darwin' ]; then
+  OS='Mac'
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+  OS='Linux'
+  source $DOTROOT/bashrc_linux.sh
+else
+  echo "Your platform ($(uname -a)) is not supported."
+  exit 1
+fi
 #---------------------------------------------------------------
 # loacl aliases
 #---------------------------------------------------------------
@@ -63,3 +36,4 @@ if [[ -e $HOME/.local_aliases.sh ]]; then
 fi
 alias al="vim $HOME/.local_aliases.sh"
 alias sal="source $HOME/.local_aliases.sh"
+
