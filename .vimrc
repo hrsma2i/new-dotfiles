@@ -154,7 +154,7 @@ set encoding=utf8
 " _ を単語としてカウントしない
 " set iskeyword-=_
 
-inoremap jj <ESC>
+"inoremap jj <ESC>
 " Up/Down by half a page
 nnoremap J <C-d>
 nnoremap K <C-u>
