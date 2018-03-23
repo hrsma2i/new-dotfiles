@@ -1,21 +1,23 @@
 joblib
 tqdm
+trash-cli
 
 numpy
 matplotlib
 pandas
+scipy
 jupyter
 jupyter_contrib_nbextensions
 
 pillow
 opencv-python
 scikit-image
-scipy
 scikit-learn
 
 cupy
 chainer
 chainercv
 tensorflow
+tensorboard
 
 gensim
