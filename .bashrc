@@ -24,6 +24,7 @@ alias reset="git reset"
 #---------------------------------------------------------------
 if [ "$(uname)" == 'Darwin' ]; then
   OS='Mac'
+  source $HOME/.dotfiles/bashrc_mac.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
   OS='Linux'
   source $HOME/.dotfiles/bashrc_linux.sh
