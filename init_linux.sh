@@ -67,9 +67,7 @@ case $PYTHON_MANAGER in
 		# -s: skip if the version appears to be installed already
 
 		# make base virtual env
-		pyenv virtualenv $PYTHON_VER base_env && true
-		cd $HOME
-		pyenv local base_env
+		pyenv global $PYTHON_VER
 	;;
 esac
 
@@ -86,26 +84,6 @@ if ! has trash; then
 else
 	echo -e $GREEN'trash-cli is already installed'$RESET
 fi
-
-
-#--------------------------------------------------------------------
-# jupyter
-#--------------------------------------------------------------------
-export PATH="$PYENV_ROOT/bin:$PATH"
-case $PYTHON_MANAGER in
-	"pyenv")
-		pip install jupyter 
-		python -c 'from notebook.auth import passwd;print(passwd())' > $DOTROOT/.jupyter/key
-		# install extensions
-		pip install jupyter_contrib_nbextensions
-	;;
-esac
-mkdir -p $(jupyter --data-dir)/nbextensions
-cd $(jupyter --data-dir)/nbextensions
-git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && true
-chmod -R go-w vim_binding
-cd $HOME
-
 
 #--------------------------------------------------------------------
 # deploy (must be the last)
